@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="utf-8">
+<meta name="description" content="Change texts with jQuery">
+<title>Change Text Styles</title>
+
+<style>
+        /* The following CSS is just for basic layout and appearance */
+        #sampleText {
+            margin: 10px 30px;
+            padding: 0 10px;
+            border: 3px ridge gray;
+        }
+
+        #attributeForm {
+            float: left;
+            margin-left: 30px;
+        }
+
+        input[type='radio'] {
+            margin: 0 5px 0 0;
+        }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+        }
+
+        h1 {
+         text-align: center;
+      }
+        button {
+            margin-top: 10px;
+            font-size: .8em;
+        }
+</style>
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+        // Define a document ready handler
+        $(function () {
+            // Attach a click event handler to all the radio buttons in the attribute selection form
+            $("#background :radio").change(function () {
+                $("#body").css($(this).attr("name"), $(this).val());
+            });
+
+              // Attach a click event handler to the font size selection box
+              $("#fontFamily :radio").change(function () {
+                $("#sampleText").css($(this).attr("name"), $(this).val());
+            });
+
+            // Attach a click event handler to the font size selection box
+            $("#fontSize").change(function () {
+                $("#sampleText").css($(this).attr("name"), $(this).val());
+            });
+
+            // Attach a click event handler to the checkboxes in the attribute selection form
+            $("#attributeForm :checkbox").change(function () {
+                $("#sampleText").css($(this).attr("name"), this.checked ? $(this).val() : "");
+            });
+
+            // Attach a click event handler to the Reset All button
+            $("#resetAll").click(function () {
+                $("#attributeForm [checked]").click(); // Clicks attribute form elements that have a checked attribute
+                $("#fontSize").val(""); // Selects the font-size that has a value of ""
+                $("#attributeForm :checked").click(); // Clicks all the checkboxes that are checked (to uncheck them)
+            });
+        });
+</script>
+</head>
+
+<body id="body">
+<h1>Change Text Styles</h1>
+
+<div>  
+<form id="attributeForm">
+     
+            <div id = "fontFamily">  
+            <label><h4>Font Family</h4></label>  
+            <label><input type="radio" name="font-family" value='"Comic Sans MS", cursive, sans-serif'
+                id="comicSans">Comic Sans MS</label><br>
+            <label><input type="radio" name="font-family" value="Tahoma, Geneva, sans-serif"
+                id="tahoma">Tahoma</label><br>
+            <label><input type="radio" name="font-family" value='"Courier, Helvetica, sans-serif'
+                id="trebuchet">Courier</label><br>
+             <label><input type="radio" name="font-family" value="Fantasy, Geneva, sans-serif"
+                id="verdana">Fantasy</label><br>
+            <label><input type="radio" name="font-family" value=""
+                id="fontFamilyDefault" checked>Default</label> 
+           </div>
+           
+           <div id ="background">
+           <label><h4>Background Color</h4></label> 
+           <label><input type="radio" name="background-color" value="Green"
+              id="green">Green</label><br>
+          <label><input type="radio" name="background-color" value="Blue"
+              id="blue">Blue</label><br>
+          <label><input type="radio" name="background-color" value="Yellow"
+              id="yellow">Yellow</label><br>
+          <label><input type="radio" name="background-color" value="Pink"
+              id="pink">Pink</label><br>
+          <label><input type="radio" name="background-color" value=""
+              id="bgColorDefault" checked>Default</label>
+          </div>
+            
+            <div> 
+                <label for="fontSize"><h4>Font Size</h4></label>  
+                <label for="fontSize">Select one:</label><br>
+                <select name="font-size" size="5" id="fontSize">
+                    <option value="small">Small</option> 
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>   
+                    <option value="" selected>Default</option>
+                </select>  
+            </div>
+
+            <div>
+            <label><h4>Text</h4></i></label> 
+            <label><input type="checkbox" name="font-weight" value="bold" id="boldCheck">bold</label><br>
+            <label><input type="checkbox" name="font-style" value="italic" id="italicCheck">italic</label><br>
+            <label><input type="checkbox" name="font-variant" value="small-caps"
+                          id="smallCapsCheck">small-caps</label><br>
+            <label><input type="checkbox" name="text-decoration" value="underline"
+                          id="underlineCheck">underline</label><br>
+            <label><input type="checkbox" name="letter-spacing" value="-1px" id="tight">tight</label>
+            </div>
+            <button type="button" id="resetAll">Reset All</button>
+</form>
+
+<br style="clear: both">
+
+<div id="sampleText">
+    <h2>Why ‘the future of AI is the future of work’</h2>
+
+    <p>Below are the information extracted from MIT Management Sloan School's website: </p>
+    <p>More recently, the basic technologies of the internet began in the 1960s and 1970s, then exploded into the commercial world in the mid-1990s. Even so, it is only in the past decade that most businesses have truly embraced networked computing as a transformation of their businesses and processes.</p>
+    <p>Specialized AI systems, through their reliance on largely human-generated data, excel at producing behaviors that mimic human behavior on well-known tasks. They also incorporate human biases.</p>
+    <p>They still have problems with robustness, the ability to perform consistently under changing circumstances (including intentionally introduced noise in the data), and trust, the human belief that an assigned task will be performed correctly every single time.
+    From a work perspective, specialized AI systems tend to be task-oriented; that is, they execute limited sets of tasks, more than the full set of activities constituting an occupation. Still, all occupations have some exposure. For example, reading radiographs is a key part of radiologists’ jobs, but just one of the dozens of tasks they perform.</p>
+</div>
+<a href ="https://mitsloan.mit.edu/ideas-made-to-matter/why-future-ai-future-work"> Check this website to read the full article!</a>
+</body>
+</html>
